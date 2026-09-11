@@ -1,96 +1,330 @@
-/* Dark Mode */
+/* ===== Base / palette ===== */
+:root {
+  --navy: #10233f;
+  --green: #2f6f4f;
+  --text: #1c2530;
+  --muted: #5b6773;
+  --border: #dfe3e8;
+  --bg: #ffffff;
+  --bg-alt: #f6f7f9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+header.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 40px 20px 28px;
+}
+
+.header-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.header-text h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 2px 0;
+}
+
+.header-text .role {
+  color: var(--green);
+  font-weight: 600;
+  font-size: 0.98rem;
+  margin-bottom: 8px;
+}
+
+.header-text .location-line {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+}
+
+.header-text .location-line span::after {
+  content: "  \00b7  ";
+  color: var(--border);
+}
+.header-text .location-line span:last-child::after { content: ""; }
+
+.header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--navy);
+  border-radius: 4px;
+  color: var(--navy);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.btn-link:hover { background: var(--navy); color: #fff; text-decoration: none; }
+
+.btn-link.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.btn-link.primary:hover { background: #24593e; border-color: #24593e; }
+
+/* ===== Dark mode toggle ===== */
+#darkModeToggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#darkModeToggle:hover { border-color: var(--navy); }
+
+/* ===== Nav tabs ===== */
+nav.tabs {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+nav.tabs a {
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+nav.tabs a:hover { color: var(--navy); text-decoration: none; }
+nav.tabs a.active { color: var(--navy); border-bottom-color: var(--green); }
+
+/* ===== Sections ===== */
+section.panel {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.entry {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 18px;
+}
+.entry:last-child { border-bottom: none; }
+
+.entry-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px;
+  background: #fff;
+}
+
+.entry-body { flex: 1; min-width: 0; }
+
+.entry-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+}
+
+.entry-title { font-weight: 700; font-size: 1.05rem; color: var(--navy); }
+.entry-sub { color: var(--green); font-weight: 600; font-size: 0.92rem; margin-top: 2px; }
+.entry-date { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+
+.entry-desc { margin: 8px 0 0 0; font-size: 0.94rem; }
+.entry ul { margin: 8px 0 0 0; padding-left: 18px; font-size: 0.94rem; }
+.entry li { margin-bottom: 4px; }
+
+.entry-photos {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.entry-photos img {
+  width: 150px;
+  height: 105px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+.entry-photos figure { margin: 0; }
+.entry-caption {
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ===== Projects ===== */
+.project-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.project-item:last-child { border-bottom: none; }
+.project-item.featured {
+  background: var(--bg-alt);
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.project-title { font-weight: 700; color: var(--navy); font-size: 1.05rem; }
+.project-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.project-stack { font-size: 0.82rem; color: var(--muted); margin: 4px 0 8px 0; }
+.project-desc { font-size: 0.94rem; margin: 0 0 8px 0; }
+.project-desc ul { margin: 4px 0 0 0; padding-left: 18px; }
+.project-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.project-links a {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 5px 11px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+}
+.project-links a:hover { border-color: var(--navy); color: var(--navy); text-decoration: none; }
+
+/* ===== Skills ===== */
+.skill-group { padding: 18px 0; border-bottom: 1px solid var(--border); }
+.skill-group:last-child { border-bottom: none; }
+.skill-group h3 {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--navy);
+  margin: 0 0 10px 0;
+}
+.skill-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-chips span {
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.cert-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.cert-card img { width: 100%; height: 130px; object-fit: cover; display: block; }
+.cert-card .cert-body { padding: 10px 12px; }
+.cert-card .cert-body p { margin: 0 0 8px 0; font-size: 0.88rem; font-weight: 600; }
+.cert-card .cert-body a { font-size: 0.8rem; font-weight: 600; }
+
+/* ===== Section heading ===== */
+h2.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 4px 0;
+}
+p.section-sub { color: var(--muted); font-size: 0.88rem; margin: 0 0 20px 0; }
+
+/* ===== Footer ===== */
+footer.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ===== Dark mode ===== */
 body.dark-mode {
-    background-color: #252526;
-    color: white;
-  }
-  
-  /* Override specific Bootstrap text color classes in dark mode */
-  body.dark-mode .text-body-emphasis {
-    color: white !important;
-  }
-  
-  /* Ensure other text elements like h1, h2, p, etc., are affected */
-  body.dark-mode h1, 
-  body.dark-mode h2, 
-  body.dark-mode h3, 
-  body.dark-mode p, 
-  body.dark-mode a {
-    color: white;
-  }
-  
-  /* Ensure buttons stay visible in dark mode */
-  body.dark-mode .btn-outline-light {
-    border-color: white;
-    color: white;
-  }
-  
-  /* When dark mode is active, change the button to light color */
-  body.dark-mode #darkModeToggle {
-    background-color: white;
-    color: #252526;
-    border-color: white;
-  }
-  
-  /* Default dark mode button in normal mode */
-  #darkModeToggle {
-    background-color: black;
-    color: white;
-    border-color: black;
-  }
-.btn {
-    width: 180px; /* Set a fixed width */
-    height: 40px; /* Set a fixed height */
-    margin-right: 5px; /* Add some margin between buttons */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
+  --text: #e7eaee;
+  --muted: #9aa4af;
+  --border: #333d49;
+  --bg: #14181f;
+  --bg-alt: #1b2028;
+  background: var(--bg);
+  color: var(--text);
 }
+body.dark-mode .avatar,
+body.dark-mode .entry-logo { border-color: var(--border); background: #1b2028; }
+body.dark-mode .btn-link { color: #e7eaee; border-color: #e7eaee; }
+body.dark-mode .btn-link:hover { background: #e7eaee; color: var(--navy); }
+body.dark-mode .btn-link.primary { background: var(--green); border-color: var(--green); color: #fff; }
+body.dark-mode #darkModeToggle { border-color: var(--border); color: var(--text); }
+body.dark-mode nav.tabs a.active,
+body.dark-mode .entry-title,
+body.dark-mode .project-title,
+body.dark-mode .header-text h1,
+body.dark-mode .skill-group h3,
+body.dark-mode h2.section-title { color: #ffffff; }
 
-/* Make the icon fill the button */
-.btn i {
-    margin-right: 8px; /* Space between the icon and text */
-    font-size: 1rem; /* Adjust icon size */
-    flex-shrink: 0; /* Prevent icon from shrinking */
-    position: relative; /* Allow position adjustments */
-    top: 1px; /* Slightly adjust vertical position */
-}
-
-/* Optional: Adjust text size for better alignment */
-.btn span {
-    font-size: 1em; /* Adjust text size if needed */
-}
-
-.custom-small {
-    font-size: 1rem; /* Adjust the size as needed */
-}
-
-.large-badge {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Dark Mode Styles */
-body.dark-mode .btn {
-    border: 1px solid white; /* White border in dark mode */
-    color: white; /* White text in dark mode */
-    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
-}
-
-/* Ensure the icon and text are visible in dark mode */
-body.dark-mode .btn i {
-    color: white; /* White icon in dark mode */
-}
-
-body.dark-mode .btn span {
-    color: white; /* White text in dark mode */
-}
-
-/* Dark mode: Light Mode button adjustment (Not fully white) */
-body.dark-mode #darkModeToggle {
-    background-color: rgba(255, 255, 255, 0.2); /* Light, but not fully white */
-    color: black; /* Dark text for better visibility */
-    border: 1px solid white; /* White border for consistency */
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .header-inner { flex-direction: column; align-items: center; text-align: center; }
+  .header-links { justify-content: center; }
+  .entry { flex-direction: column; }
+  .entry-title-row { flex-direction: column; align-items: flex-start; }
+  #darkModeToggle { position: static; margin-bottom: 16px; display: block; }
 }
